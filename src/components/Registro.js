@@ -21,7 +21,14 @@ class Registro extends Component {
 
             <div className="App">
                 {
-                    urlsArray.map(url => url.id + url.URL)
+                    urlsArray.map( function(url){
+                        return(
+                            <div>
+                                <p>{ url.id }</p>
+                                <p>{url.URL}</p>
+                            </div>
+                         )
+                    })
                 }
             </div>
 

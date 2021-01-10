@@ -1,6 +1,7 @@
 import { React, Component} from "react"
 import  { Button, Card, Row } from 'react-bootstrap'
 import Formulario from "./Formulario"
+import Registro from "./Registro"
 
 class Home extends Component {
 
@@ -64,7 +65,9 @@ class Home extends Component {
                     <Button variant="outline-primary mx-2" onClick={this.agregarForm} size="sm">Agregar url</Button>
                     <Button variant="outline-info" onClick={this.agregarRegistro} size="sm">Guardar registro</Button>
                 </Row>
-
+                <Row>
+                    <Registro></Registro>
+                </Row>
             </div>
         )
     }

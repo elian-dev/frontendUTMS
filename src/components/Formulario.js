@@ -7,7 +7,8 @@ class Formulario extends Component {
         super(props);
         this.state = {
             utmsSource: [],
-            utmsMedium: []
+            utmsMedium: [],
+            utmSource: ''
         }
 
         this.handlerSource = this.handlerSource.bind(this);
@@ -23,21 +24,29 @@ class Formulario extends Component {
     }
 
     handlerSource(e){
-
         let id = e.target.value;
-        
-        console.log(e);
         fetch("http://localhost:1337/utm-mediums?_where[utm_source.id]="+id)
              .then(response => response.json())
-             .then(data => this.setState({ utmsMedium: data }))
+             .then(data => this.setState({ utmsMedium: data}))
+    }   
 
-    }
+    generateURL(e, utm_type){
+        let utm_source = '';
 
-    generateURL(){
-        let url = document.getElementById("generando_url");
-        let utmSource = document.getElementById("utm-source");
+        switch (utm_type) {
+            case "":
+                utm_source = e.target.value;
+                break;
+    
+            default:
+                break;
+        }
 
-        utmSource.addEventListener('change', function(e){return console.log(e.target.value)});
+        let urlParams = {
+            utm_source: utm_source
+        }
+
+        console.log(e);
 
     }
 
@@ -68,7 +77,7 @@ class Formulario extends Component {
                     </Col>
                     <Col>
                         <Form.Label>UTM Campaign</Form.Label>
-                        <Form.Control placeholder="UTM Campaign" />
+                        <Form.Control placeholder="UTM Campaign" id="utm-campaign" />
                     </Col>
                 </Form.Row>
                 <Form.Row className="my-3">
